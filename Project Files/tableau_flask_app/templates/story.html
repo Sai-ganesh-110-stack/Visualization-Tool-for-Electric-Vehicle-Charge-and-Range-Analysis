@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="badge-tag">
+        <i class="fas fa-compass"></i> Story Explorer View
+    </div>
+    <h1 class="hero-title">Dedicated Story Workspace</h1>
+    <p class="hero-description">
+        In-depth view of Tableau Story 5 with sidebar context and interactive controls.
+    </p>
+</section>
+
+<div class="explorer-layout">
+    <!-- Main Interactive Story Visualization Frame -->
+    <section class="viz-mockup-window">
+        <div class="mockup-header">
+            <div class="mockup-controls">
+                <span class="mockup-dot close"></span>
+                <span class="mockup-dot minimize"></span>
+                <span class="mockup-dot maximize"></span>
+            </div>
+            
+            <div class="mockup-title">
+                <i class="fas fa-layer-group"></i> Story 5 Explorer
+            </div>
+
+            <div class="mockup-actions">
+                <button id="btn-reload" class="mockup-btn" title="Reload Story">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+                <button id="btn-fullscreen" class="mockup-btn" title="Toggle Fullscreen">
+                    <i class="fas fa-expand"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="viz-frame-wrapper">
+            <!-- Loading State Overlay -->
+            <div class="viz-loading-overlay">
+                <div class="pulsing-spinner"></div>
+                <div class="loading-text">Loading Tableau Story Workspace...</div>
+            </div>
+
+            <!-- Embedded Tableau Story Object -->
+            <div class='tableauPlaceholder' id='viz1784497882945_story' style='position: relative'>
+                <noscript>
+                    <a href='#'>
+                        <img alt='Story 5 ' src='{{ meta.embed_src }}' style='border: none' />
+                    </a>
+                </noscript>
+                <object class='tableauViz' style='display:none;'>
+                    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                    <param name='embed_code_version' value='3' />
+                    <param name='site_root' value='' />
+                    <param name='name' value='Book1_17844812171770&#47;Story5' />
+                    <param name='tabs' value='no' />
+                    <param name='toolbar' value='yes' />
+                    <param name='static_image' value='{{ meta.embed_src }}' />
+                    <param name='animate_transition' value='yes' />
+                    <param name='display_static_image' value='yes' />
+                    <param name='display_spinner' value='yes' />
+                    <param name='display_overlay' value='yes' />
+                    <param name='display_count' value='yes' />
+                    <param name='language' value='en-US' />
+                    <param name='filter' value='publish=yes' />
+                </object>
+            </div>
+            <script type='text/javascript'>
+                var divElement = document.getElementById('viz1784497882945_story');
+                var vizElement = divElement.getElementsByTagName('object')[0];
+                vizElement.style.width='100%';
+                vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
+                var scriptElement = document.createElement('script');
+                scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                vizElement.parentNode.insertBefore(scriptElement, vizElement);
+            </script>
+        </div>
+    </section>
+
+    <!-- Side Context & Controls Panel -->
+    <aside class="glass-panel control-panel">
+        <h3 class="panel-title">Story Guide</h3>
+        
+        <ul class="feature-list">
+            <li class="feature-item">
+                <div class="feature-number">1</div>
+                <div class="feature-text">
+                    <h4>Story Navigator</h4>
+                    <p>Use the navigation tabs at the top of the Tableau frame to slide through different narrative views.</p>
+                </div>
+            </li>
+            
+            <li class="feature-item">
+                <div class="feature-number">2</div>
+                <div class="feature-text">
+                    <h4>Interactive Tooltips</h4>
+                    <p>Hover over data points, bars, and scatter elements to inspect granular dimensions and measures.</p>
+                </div>
+            </li>
+            
+            <li class="feature-item">
+                <div class="feature-number">3</div>
+                <div class="feature-text">
+                    <h4>Dynamic Filters</h4>
+                    <p>Click on chart marks to highlight related data across synchronized sheets.</p>
+                </div>
+            </li>
+        </ul>
+
+        <div style="margin-top: 32px; display: flex; flex-direction: column; gap: 12px;">
+            <a href="{{ meta.public_url }}" target="_blank" class="btn-primary" style="justify-content: center;">
+                <i class="fas fa-external-link-alt"></i> Open on Tableau
+            </a>
+            <a href="/api/status" target="_blank" class="btn-outline" style="justify-content: center;">
+                <i class="fas fa-code"></i> View API Metadata
+            </a>
+        </div>
+    </aside>
+</div>
+{% endblock %}

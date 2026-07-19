@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title if page_title else "Tableau Flask Portal" }}</title>
+    <!-- Modern Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Top Navigation Header -->
+    <header class="app-header glass-panel">
+        <div class="nav-container">
+            <a href="/" class="logo-section">
+                <div class="logo-icon">T</div>
+                <span class="logo-text">Analytics Portal</span>
+            </a>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li>
+                        <a href="/" class="nav-link {{ 'active' if active_page == 'home' else '' }}">
+                            <i class="fas fa-chart-pie"></i> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/story" class="nav-link {{ 'active' if active_page == 'story' else '' }}">
+                            <i class="fas fa-layer-group"></i> Story Explorer
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/api/status" target="_blank" class="nav-link">
+                            <i class="fas fa-server"></i> API Status
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="nav-controls">
+                <button class="btn-toggle-theme" title="Toggle Theme" aria-label="Toggle Light and Dark Theme">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="app-container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="app-footer">
+        <div class="footer-links">
+            <a href="/" class="footer-link">Home</a> • 
+            <a href="/story" class="footer-link">Story View</a> • 
+            <a href="{{ meta.public_url if meta else '#' }}" target="_blank" class="footer-link">Tableau Public <i class="fas fa-external-link-alt"></i></a>
+        </div>
+        <p>&copy; {{ meta.last_updated if meta else '2026' }} Tableau Flask Web Integration • Built with Flask & Vanilla CSS</p>
+    </footer>
+
+    <!-- Main Client-side Script -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

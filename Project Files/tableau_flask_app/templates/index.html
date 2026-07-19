@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Title Header -->
+<section class="hero-section">
+    <div class="badge-tag">
+        <i class="fas fa-bolt"></i> Interactive Story Dashboard
+    </div>
+    <h1 class="hero-title">{{ meta.title }}</h1>
+    <p class="hero-description">
+        Embedded Tableau Story visualization wrapped inside a custom Flask application UI. Explore multi-sheet insights, dynamic filters, and real-time interactive storytelling.
+    </p>
+</section>
+
+<!-- Analytics Key Indicator Cards -->
+<section class="metrics-grid">
+    <div class="glass-panel metric-card">
+        <div class="metric-header">
+            <span>Integration Status</span>
+            <i class="fas fa-signal metric-icon"></i>
+        </div>
+        <div class="metric-value">Active</div>
+        <div class="metric-trend trend-up">
+            <i class="fas fa-check-circle"></i> Connected via Tableau JS API v1
+        </div>
+    </div>
+
+    <div class="glass-panel metric-card">
+        <div class="metric-header">
+            <span>Workbook Reference</span>
+            <i class="fas fa-book metric-icon"></i>
+        </div>
+        <div class="metric-value" style="font-size: 1.25rem; word-break: break-all;">
+            {{ meta.workbook_name }}
+        </div>
+        <div class="metric-trend trend-stable">
+            <i class="fas fa-folder"></i> Story Point: {{ meta.story_name }}
+        </div>
+    </div>
+
+    <div class="glass-panel metric-card">
+        <div class="metric-header">
+            <span>Rendering Engine</span>
+            <i class="fas fa-laptop-code metric-icon"></i>
+        </div>
+        <div class="metric-value">Flask + HTML5</div>
+        <div class="metric-trend trend-up">
+            <i class="fas fa-mobile-alt"></i> Adaptive Responsive Frame
+        </div>
+    </div>
+
+    <div class="glass-panel metric-card">
+        <div class="metric-header">
+            <span>Data Sync</span>
+            <i class="fas fa-clock metric-icon"></i>
+        </div>
+        <div class="metric-value" style="font-size: 1.4rem;">{{ meta.last_updated }}</div>
+        <div class="metric-trend trend-stable">
+            <i class="fas fa-cloud"></i> Tableau Public Cloud Server
+        </div>
+    </div>
+</section>
+
+<!-- Tableau Visualization Container (Desktop Mockup Window) -->
+<section class="viz-mockup-window">
+    <div class="mockup-header">
+        <div class="mockup-controls">
+            <span class="mockup-dot close"></span>
+            <span class="mockup-dot minimize"></span>
+            <span class="mockup-dot maximize"></span>
+        </div>
+        
+        <div class="mockup-title">
+            <i class="fas fa-chart-line"></i> {{ meta.workbook_name }} / {{ meta.story_name }}
+            <span class="mockup-status-badge">Live View</span>
+        </div>
+
+        <div class="mockup-actions">
+            <button id="btn-reload" class="mockup-btn" title="Reload Visualization">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+            <button id="btn-fullscreen" class="mockup-btn" title="Enter Fullscreen">
+                <i class="fas fa-expand"></i>
+            </button>
+            <a href="{{ meta.public_url }}" target="_blank" class="mockup-btn" title="Open in Tableau Public">
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="viz-frame-wrapper">
+        <!-- Loading State Overlay -->
+        <div class="viz-loading-overlay">
+            <div class="pulsing-spinner"></div>
+            <div class="loading-text">Connecting to Tableau Public Server...</div>
+        </div>
+
+        <!-- Embedded Tableau Story Object -->
+        <div class='tableauPlaceholder' id='viz1784497882945' style='position: relative'>
+            <noscript>
+                <a href='#'>
+                    <img alt='Story 5 ' src='{{ meta.embed_src }}' style='border: none' />
+                </a>
+            </noscript>
+            <object class='tableauViz' style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                <param name='embed_code_version' value='3' />
+                <param name='site_root' value='' />
+                <param name='name' value='Book1_17844812171770&#47;Story5' />
+                <param name='tabs' value='no' />
+                <param name='toolbar' value='yes' />
+                <param name='static_image' value='{{ meta.embed_src }}' />
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='language' value='en-US' />
+                <param name='filter' value='publish=yes' />
+            </object>
+        </div>
+        <script type='text/javascript'>
+            var divElement = document.getElementById('viz1784497882945');
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            vizElement.style.width='100%';
+            vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
+            var scriptElement = document.createElement('script');
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);
+        </script>
+    </div>
+</section>
+{% endblock %}
