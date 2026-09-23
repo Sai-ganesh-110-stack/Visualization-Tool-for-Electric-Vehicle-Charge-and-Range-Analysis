@@ -7,7 +7,7 @@ app = Flask(__name__)
 # Sample metadata for Tableau Visualizations
 TABLEAU_METADATA = {
     "title": "Business Intelligence & Data Story 5",
-    "workbook_name": "Book1_17844812171770",
+    "workbook_name": "DataAnalysis using Tablue",
     "story_name": "Story5",
     "author": "Data Analytics Team",
     "public_url": "https://public.tableau.com/views/DataAnalysisusingTablue/Story5?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
