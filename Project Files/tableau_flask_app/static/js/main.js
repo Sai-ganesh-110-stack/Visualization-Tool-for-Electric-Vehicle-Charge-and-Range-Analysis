@@ -136,8 +136,10 @@ document.addEventListener('DOMContentLoaded', () => {
             vizElement.style.height = '100%';
         } else {
             vizElement.style.width = '100%';
-            // If the element has a native set height we keep it, otherwise scale dynamically
-            const calculatedHeight = Math.max(500, divElement.offsetWidth * 0.5625); // 16:9 ratio
+            // Scale dynamically according to Tableau story native aspect ratio (1016x991)
+            const calculatedHeight = divElement.offsetWidth < 1016 
+                ? Math.max(650, Math.round(divElement.offsetWidth * (991 / 1016)))
+                : 991;
             vizElement.style.height = calculatedHeight + 'px';
         }
     }

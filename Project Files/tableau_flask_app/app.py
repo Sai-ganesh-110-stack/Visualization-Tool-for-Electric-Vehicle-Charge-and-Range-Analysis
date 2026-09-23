@@ -10,8 +10,10 @@ TABLEAU_METADATA = {
     "workbook_name": "Book1_17844812171770",
     "story_name": "Story5",
     "author": "Data Analytics Team",
-    "public_url": "https://public.tableau.com/views/Book1_17844812171770/Story5?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
-    "embed_src": "https://public.tableau.com/static/images/Bo/Book1_17844812171770/Story5/1.png",
+    "public_url": "https://public.tableau.com/views/DataAnalysisusingTablue/Story5?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+    "embed_src": "https://public.tableau.com/static/images/Da/DataAnalysisusingTablue/Story5/1.png",
+    "embed_src_rss": "https://public.tableau.com/static/images/Da/DataAnalysisusingTablue/Story5/1_rss.png",
+    "viz_id": "viz1790162539640",
     "host_url": "https://public.tableau.com/",
     "last_updated": datetime.datetime.now().strftime("%B %d, %Y")
 }
